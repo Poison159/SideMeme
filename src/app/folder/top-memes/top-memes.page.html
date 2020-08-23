@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="meme"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-chip color="meme">
+        <ion-icon name="podium"></ion-icon> <ion-text color="light">TOP 3</ion-text>
+      </ion-chip>
+    </ion-title>
+      <ion-chip color="meme" (click)="ChangeIndex()" slot="end">
+        {{span}}
+      </ion-chip>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-slides>
+    <ion-slide *ngFor="let img of things[i]?.meme; let i = index;">
+      <ion-card  color="light">
+        <ion-card-title style="text-align:center;padding-top:0px">
+          <ion-img [src]="img.imgPath"></ion-img>
+          <ion-item lines="none">          
+            <ion-text color="meme" slot="end" *ngIf="img.likes?.length === 0" style="padding-left:0px;">0 likes</ion-text>
+            <ion-text (click)= "openLikes(img.likes)" slot="end" *ngIf="img.likes?.length === 1">{{img.likes.length}} like</ion-text>
+            <ion-text (click)= "openLikes(img.likes)" slot="end" *ngIf="img.likes?.length > 1">{{img.likes.length}} likes</ion-text>
+          </ion-item>
+        </ion-card-title>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+    
+</ion-content>
+

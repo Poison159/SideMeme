@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title color="meme">Comments</ion-title>
+    <ion-icon color="meme" (click)="dismiss()" style="zoom:1.5; padding-right:10px;" name="close" slot="end"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item lines="none">
+    <ion-textarea rows={6} cols={80} [(ngModel)]="comment" placeholder="Add comment" clear-on-edit="true"></ion-textarea>
+    <ion-button  (click)="send(id,comment)" size="small" shape="round" fill="outline" slot="end" expand="full" color="primary">send</ion-button>
+  </ion-item>
+    <ion-card *ngFor="let comm of comments">
+      <ion-card-title color="primary" style="margin:auto;text-align: center;">{{comm.email.split('@')[0]}}</ion-card-title>
+      <ion-card-content>
+        {{comm.comment}}
+      </ion-card-content>
+      <ion-row class="cardfooter">
+        <ion-col>
+          <ion-toolbar size="small">
+            <p style="color:#4c8dff"  slot="end">{{comm.time.split(' ')[0]}}</p>
+            <p style="color:#4c8dff" slot="start">{{comm.time.split(' ')[1]}}</p>
+          </ion-toolbar>
+        </ion-col>
+      </ion-row>
+    </ion-card> 
+</ion-content>

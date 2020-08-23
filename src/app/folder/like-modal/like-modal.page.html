@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-chip color="meme" slot="start">
+      💖 Meme-Likes 💖
+      </ion-chip>
+    <ion-icon color="meme" (click)="dismiss()" style="zoom:1.5; padding-right:10px;" name="close" slot="end"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item (click)="seeLikes(like.email)" *ngFor="let like of likes">
+      {{like.email.split('@')[0]}}
+    </ion-item>
+  </ion-list>
+</ion-content>

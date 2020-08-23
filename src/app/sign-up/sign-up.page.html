@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title color="meme">SignUp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="height: 40%;"></div>
+  <ion-card color="dark">
+    <ion-card-content>
+      <ion-input position="floating" placeholder="Email" [(ngModel)]="email"></ion-input>
+      <ion-input type="password" position="floating" placeholder="Password" [(ngModel)]="password"></ion-input>
+      <ion-input type="password" position="floating" placeholder="Confirm Password" [(ngModel)]="confirmPassword"></ion-input>
+      <ion-button color="meme" expand="block" (click)="signUp()"> <ion-icon name="person-add-outline"></ion-icon>
+        <p style="zoom:1.4">Sign Up</p></ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

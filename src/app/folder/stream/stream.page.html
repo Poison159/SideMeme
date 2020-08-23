@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="meme"></ion-menu-button>
+    </ion-buttons>
+      <ion-chip style="font-weight: bold;" slot="end" color="meme"><ion-icon name="images"></ion-icon> 
+        <ion-text> Stream</ion-text> </ion-chip>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-slides>
+    <ion-slide style="height:100%" *ngFor="let img of images">
+        <ion-card color="light">
+          <ion-card-title style="text-align:center;padding-top:0px">
+            <ion-img [src]="img.imgPath"></ion-img>
+            <ion-item lines="none">
+              <ion-icon (click)="like(img.id)" *ngIf="!likes.includes(img.id)" color="meme" slot="start" style="zoom:1.5;padding-top:0px" name="heart-empty"></ion-icon>
+              <p slot="end" *ngIf="img.likes?.length === 0" style="padding-left:0px;">Be the first to like this</p>
+              <ion-icon (click)="like(img.id)" *ngIf="likes.includes(img.id)" color="meme" slot="start" style="zoom:1.5;padding-top:0px" name="heart"></ion-icon>
+              <ion-text color="meme" (click)= "openLikes(img.likes)" slot="end" *ngIf="img.likes?.length === 1">{{img.likes.length}} like</ion-text>
+              <ion-text color="meme" (click)= "openLikes(img.likes)" slot="end" *ngIf="img.likes?.length > 1">{{img.likes.length}} likes</ion-text>
+            </ion-item>
+          </ion-card-title>
+          <ion-item lines="none">
+            <ion-textarea rows={6} cols={20} *ngIf="img.comments?.length === 0" [(ngModel)]="comment" placeholder="Add comment" clear-on-edit="true"></ion-textarea>
+            <ion-text color="meme" slot="end" (click)="presentModal(img.id)" *ngIf="img.comments?.length > 1">{{img.comments.length}} Comments</ion-text>
+            <ion-text color="meme" slot="end" (click)="presentModal(img.id)" *ngIf="img.comments?.length === 1">{{img.comments.length}} Comment</ion-text>
+            <ion-button *ngIf="img.comments?.length === 0" (click)="send(img.id,comment)" size="small" shape="round" fill="outline" slot="end" expand="full" color="meme">send</ion-button>
+          </ion-item>
+        </ion-card>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

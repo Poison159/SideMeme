@@ -24,3 +24,22 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+:root {
+    --ion-color-meme: #ab0392;
+    --ion-color-meme-rgb: 171,3,146;
+    --ion-color-meme-contrast: #ffffff;
+    --ion-color-meme-contrast-rgb: 255,255,255;
+    --ion-color-meme-shade: #960380;
+    --ion-color-meme-tint: #b31c9d;
+  }
+  
+  .ion-color-meme {
+    --ion-color-base: var(--ion-color-meme);
+    --ion-color-base-rgb: var(--ion-color-meme-rgb);
+    --ion-color-contrast: var(--ion-color-meme-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-meme-contrast-rgb);
+    --ion-color-shade: var(--ion-color-meme-shade);
+    --ion-color-tint: var(--ion-color-meme-tint);
+  }

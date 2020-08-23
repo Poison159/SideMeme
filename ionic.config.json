@@ -1,5 +1,7 @@
 {
   "name": "SideMeme",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

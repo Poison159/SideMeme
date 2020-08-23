@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title color="meme">SignIn</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="height: 40%;"></div>
+  <ion-card color="dark">
+    <ion-card-content>
+      <ion-input position="floating" placeholder="Email" [(ngModel)]="email"></ion-input>
+      <ion-input type="password" position="floating" placeholder="Password" [(ngModel)]="password"></ion-input>
+      <ion-button color="meme"  expand="block" (click)="logIn()"><ion-icon name="log-in-outline"></ion-icon> Sign In </ion-button>
+      <ion-text color="primary" style="margin:auto" (click)="gotoReset()">Forgot Password?</ion-text>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
